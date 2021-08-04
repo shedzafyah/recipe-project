@@ -1,7 +1,6 @@
 package zw.co.fyah.domain;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,7 +14,7 @@ public class Recipe extends Base{
     private  String url;
 
     @Enumerated(EnumType.STRING)
-    private Diffuculty diffuculty;
+    private Difficulty difficulty;
 
     @ManyToMany
     @JoinTable(name = "recipe_category",
@@ -31,6 +30,9 @@ public class Recipe extends Base{
 
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    public Recipe() {
+    }
 
     public String getDescription() {
         return description;
@@ -102,5 +104,29 @@ public class Recipe extends Base{
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }

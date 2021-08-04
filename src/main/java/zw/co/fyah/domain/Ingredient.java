@@ -12,8 +12,16 @@ public class Ingredient extends  Base{
     private BigDecimal amount;
     @ManyToOne
     private Recipe recipe;
-    @OneToOne(fetch = FetchType.LAZY)
+
+    @OneToOne(fetch = FetchType.EAGER)
     private UnitOfMeasure unitOfMeasure;
+
+    public Ingredient(String description, BigDecimal amount, Recipe recipe, UnitOfMeasure unitOfMeasure) {
+        this.description = description;
+        this.amount = amount;
+        this.recipe = recipe;
+        this.unitOfMeasure = unitOfMeasure;
+    }
 
     public Ingredient() {
     }

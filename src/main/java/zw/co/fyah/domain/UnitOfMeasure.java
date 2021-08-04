@@ -5,16 +5,22 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class UnitOfMeasure extends Base{
-    private String unitOfMeasure;
+    private String description;
+
+    public UnitOfMeasure(String description) {
+
+        this.description = description;
+    }
 
     public UnitOfMeasure() {
+
     }
 
-    public String getUnitOfMeasure() {
-        return unitOfMeasure;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUnitOfMeasure(String unitOfMeasure) {
-        this.unitOfMeasure = unitOfMeasure;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
