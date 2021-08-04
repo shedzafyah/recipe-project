@@ -6,6 +6,7 @@ import zw.co.fyah.domain.Recipe;
 import zw.co.fyah.repository.RecipeRepository;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 @Service
 public class RecipeServiceImpl implements RecipeService{
@@ -22,5 +23,14 @@ public class RecipeServiceImpl implements RecipeService{
         Set<Recipe> recipeSet = new HashSet<>();
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
         return recipeSet;
+    }
+
+    @Override
+    public Optional<Recipe> findById(Long id) {
+        Optional<Recipe> recipeOptional = recipeRepository.findById(id);
+        if(!recipeOptional.isPresent()){
+            throw new RuntimeException("Not Found");
+        }
+        return recipeOptional;
     }
 }
